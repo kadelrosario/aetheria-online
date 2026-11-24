@@ -365,9 +365,31 @@
   }
 
   .intro__text {
-    font-size: 14px;
-    line-height: 1.55;
     padding: 20px 18px;
+  }
+
+  /* Slightly smaller (but still readable) text in the three text boxes */
+  .intro__text,
+  .characters__desc,
+  .world__desc {
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+
+  /* Bigger frame bars on phones: they reach just past the text box edges
+     (the bar keeps its shape, so wider = taller too) */
+  .intro .frame-bar,
+  .world__bar {
+    width: 108%;
+  }
+
+  .world__desc-wrap {
+    width: 92%;
+  }
+
+  .intro__text,
+  .world__desc {
+    margin: -3% 0;
   }
 
   /* Container 4: Play for Free fills the phone screen */
