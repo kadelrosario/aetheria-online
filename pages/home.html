@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aetheria Online | Official Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700;800&family=Herr+Von+Muellerhoff&family=Noto+Sans+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/home.css?v=7" />
+  <!-- Runs before the page is drawn: arrival effect after "Official Website" -->
+  <script src="../js/page-transition.js?v=7"></script>
+</head>
+<body>
+
+  <!-- ================= TOP MENU (full width) ================= -->
+  <nav class="nav" id="top-nav">
+    <ul class="nav__links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#">Patch Notes</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Support</a></li>
+      <li><a href="../index.html">Landing Page</a></li>
+    </ul>
+    <div class="nav__right">
+      <a class="nav__account" href="#" aria-label="Account">
+        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="#1d2a44" />
+          <circle cx="12" cy="9.5" r="3.6" fill="#fff" />
+          <path d="M5.2 18.6c1.4-2.6 3.9-4 6.8-4s5.4 1.4 6.8 4" fill="#fff" />
+        </svg>
+      </a>
+      <a class="btn btn--small" href="#">Register</a>
+    </div>
+  </nav>
+
+  <!-- Centred page column: side space appears on wide screens -->
+  <main class="page">
+
+  <!-- ================= CONTAINER 1 : Hero ================= -->
+  <section class="hero" id="home">
+
+    <div class="intro">
+      <div class="frame-bar"><img src="../assets/images/ui/frame-bar.webp" alt="" /></div>
+      <p class="intro__text">
+        Long ago, the world of Aetheria was protected by an ancient crystal that maintained the
+        balance between light and darkness. But when a mysterious evil force awakened, kingdoms
+        began to crumble, ancient monsters returned, and the land fell into chaos. Now, heroes from
+        across the realm must rise, master their unique abilities, and unite against the growing
+        darkness. Choose your class, forge your destiny, and become a legend in Aetheria Online.
+      </p>
+      <div class="frame-bar"><img src="../assets/images/ui/frame-bar.webp" alt="" /></div>
+    </div>
+
+    <!-- Stars: data-character must match a key in js/characters.js -->
+    <div class="stars">
+      <button class="star" data-character="warrior"   style="--x:16.5%; --y:54.6%;" aria-label="Show Warrior"><img src="../assets/images/stars/star-red.png" alt="" /></button>
+      <button class="star" data-character="cleric"    style="--x:35.6%; --y:65%;"   aria-label="Show Cleric"><img src="../assets/images/stars/star-blue.png" alt="" /></button>
+      <button class="star" data-character="mage"      style="--x:61.3%; --y:55.6%;" aria-label="Show Mage"><img src="../assets/images/stars/star-purple.png" alt="" /></button>
+      <button class="star" data-character="archer"    style="--x:85.2%; --y:65%;"   aria-label="Show Archer"><img src="../assets/images/stars/star-green.png" alt="" /></button>
+      <button class="star" data-character="mechanic"  style="--x:23.1%; --y:78%;"   aria-label="Show Mechanic"><img src="../assets/images/stars/star-bronze.png" alt="" /></button>
+      <button class="star" data-character="assassin"  style="--x:50.5%; --y:78%;"   aria-label="Show Assassin"><img src="../assets/images/stars/star-dark-red.png" alt="" /></button>
+      <button class="star" data-character="alchemist" style="--x:74.2%; --y:78%;"   aria-label="Show Alchemist"><img src="../assets/images/stars/star-gold.png" alt="" /></button>
+    </div>
+
+    <!-- Hint in the misty area at the bottom of Container 1 -->
+    <p class="star-hint">
+      <span class="star-hint__icon" aria-hidden="true">&#10022;</span>
+      Click the stars to know more about the Characters
+      <span class="star-hint__icon" aria-hidden="true">&#10022;</span>
+    </p>
+  </section>
+
+  <!-- ================= CONTAINER 2 : Character ================= -->
+  <section class="characters" id="characters">
+    <div class="characters__inner">
+      <div class="characters__info">
+        <img class="characters__logo" src="../assets/images/logo/logo.png" alt="Aetheria Online" />
+
+        <div class="characters__desc">
+          <!-- Only this text fades -->
+          <p id="character-desc" class="fade"></p>
+        </div>
+
+        <a class="btn btn--discover" id="discover-btn" href="#home">Discover More</a>
+      </div>
+
+      <div class="portrait" id="portrait">
+        <div class="frame-bar"><img src="../assets/images/ui/frame-bar.webp" alt="" /></div>
+        <div class="portrait__box">
+          <!-- Only this image fades -->
+          <img id="character-img" class="portrait__img fade" src="" alt="" />
+        </div>
+        <div class="frame-bar"><img src="../assets/images/ui/frame-bar.webp" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTAINER 3 : Aetheria Map ================= -->
+  <section class="world" id="world">
+    <div class="world__inner reveal">
+      <h2 class="world__title">The Aetheria</h2>
+
+      <figure class="world__map">
+        <img src="../assets/images/backgrounds/aetheria-map.jpg"
+             alt="Map of Aetheria showing Leona, Thornwick, Azharim, Solmara, Frosthelm and the Black Dragon's Den"
+             loading="lazy" />
+      </figure>
+
+      <p class="world__desc">
+        At the heart of the world lies Aetheria, a once-peaceful kingdom protected by an ancient
+        power that keeps the balance between the six realms. But darkness has begun spreading from
+        the Black Dragon's Den, awakening dragons and threatening the lands of Leona, Thornwick,
+        Azharim, Solmara, and Frosthelm. As ancient ruins stir and forgotten secrets emerge, heroes
+        from every corner of the world must rise to face the growing threat. Their journey will
+        determine the fate of Aetheria: will they unite the realms and restore peace, or watch the
+        world fall into darkness?
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= CONTAINER 4 : Play for Free ================= -->
+  <section class="play" id="play">
+    <a class="btn btn--play" href="#">Play for Free</a>
+  </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img class="footer__logo" src="../assets/images/logo/logo.png" alt="Aetheria Online" loading="lazy" />
+        <p class="footer__tagline">Choose your class. Forge your destiny. Become a legend.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Explore">
+        <h3>Explore</h3>
+        <a href="#home">Home</a>
+        <a href="#characters">Characters</a>
+        <a href="#world">World Map</a>
+        <a href="#play">Play for Free</a>
+      </nav>
+
+      <nav class="footer__col" aria-label="Community">
+        <h3>Community</h3>
+        <a href="#">News</a>
+        <a href="#">Patch Notes</a>
+        <a href="#">Forums</a>
+        <a href="#">Support</a>
+      </nav>
+
+      <div class="footer__col">
+        <h3>Follow Us</h3>
+        <div class="footer__social">
+          <a href="#" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9h3l.5-4h-3.5V8.8c0-.5.3-.8.5-.8z"/></svg>
+          </a>
+          <a href="#" aria-label="X">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 3h3.1l-6.8 7.8 8 10.2h-6.3l-4.9-6.4L5.3 21H2.2l7.3-8.4L1.9 3h6.4l4.4 5.9L17.8 3zm-1.1 16.2h1.7L7.3 4.7H5.5l11.2 14.5z"/></svg>
+          </a>
+          <a href="#" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15.1V8.9l5.8 3.1-5.8 3.1z"/></svg>
+          </a>
+          <a href="#" aria-label="Discord">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 4.4A19.6 19.6 0 0 0 15.4 3l-.6 1.3a18 18 0 0 0-5.6 0L8.6 3a19.6 19.6 0 0 0-4.9 1.4C.6 9.1-.3 13.6.1 18.1a19.8 19.8 0 0 0 6 3l1.3-2.1a12.8 12.8 0 0 1-2-1l.5-.4a14.1 14.1 0 0 0 12.2 0l.5.4c-.6.4-1.3.7-2 1l1.3 2.1a19.7 19.7 0 0 0 6-3c.5-5.2-.8-9.7-3.6-13.7zM8 15.4c-1.2 0-2.2-1.1-2.2-2.4S6.8 10.6 8 10.6s2.2 1.1 2.2 2.4-1 2.4-2.2 2.4zm8 0c-1.2 0-2.2-1.1-2.2-2.4s1-2.4 2.2-2.4 2.2 1.1 2.2 2.4-1 2.4-2.2 2.4z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; <span id="year">2026</span> Aetheria Online. All rights reserved.</p>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <button class="footer__totop" id="to-top" type="button" aria-label="Back to top">&#9650;</button>
+    </div>
+  </footer>
+
+  <script src="../js/characters.js?v=7"></script>
+  <script src="../js/home.js?v=7"></script>
+</body>
+</html>
