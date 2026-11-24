@@ -7,9 +7,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@700;800&family=Herr+Von+Muellerhoff&family=Noto+Sans+Mono:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/home.css?v=7" />
+  <link rel="stylesheet" href="../css/home.css?v=9" />
+  <!-- Tablet & phone layout (overrides home.css on screens 1024px and narrower) -->
+  <link rel="stylesheet" href="../css/responsive.css?v=9" />
   <!-- Runs before the page is drawn: arrival effect after "Official Website" -->
-  <script src="../js/page-transition.js?v=7"></script>
+  <script src="../js/page-transition.js?v=9"></script>
 </head>
 <body>
 
@@ -39,6 +41,21 @@
 
   <!-- ================= CONTAINER 1 : Hero ================= -->
   <section class="hero" id="home">
+
+    <!-- Tablet/phone only: logo + account + register header (hidden on desktop) -->
+    <div class="hero__header">
+      <img class="hero__logo" src="../assets/images/logo/logo.png" alt="Aetheria Online" />
+      <div class="hero__header-right">
+        <a class="nav__account" href="#" aria-label="Account">
+          <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+            <circle cx="12" cy="12" r="11" fill="#1d2a44" />
+            <circle cx="12" cy="9.5" r="3.6" fill="#fff" />
+            <path d="M5.2 18.6c1.4-2.6 3.9-4 6.8-4s5.4 1.4 6.8 4" fill="#fff" />
+          </svg>
+        </a>
+        <a class="btn btn--small" href="#">Register</a>
+      </div>
+    </div>
 
     <div class="intro">
       <div class="frame-bar"><img src="../assets/images/ui/frame-bar.webp" alt="" /></div>
@@ -74,6 +91,11 @@
   <!-- ================= CONTAINER 2 : Character ================= -->
   <section class="characters" id="characters">
     <div class="characters__inner">
+      <!-- Tablet/phone only: previous-character arrow (hidden on desktop) -->
+      <button class="char-nav char-nav--prev" id="char-prev" type="button" aria-label="Previous character">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5l-7 7 7 7M19 5l-7 7 7 7" /></svg>
+      </button>
+
       <div class="characters__info">
         <img class="characters__logo" src="../assets/images/logo/logo.png" alt="Aetheria Online" />
 
@@ -93,6 +115,19 @@
         </div>
         <div class="frame-bar"><img src="../assets/images/ui/frame-bar.webp" alt="" /></div>
       </div>
+
+      <!-- Tablet/phone only: the current character's glowing star (hidden on desktop).
+           It fades together with the image and description. -->
+      <div class="char-star fade" id="character-star-wrap" aria-hidden="true">
+        <span class="star star--static" id="character-star" data-character="warrior">
+          <img src="../assets/images/stars/star-red.png" alt="" />
+        </span>
+      </div>
+
+      <!-- Tablet/phone only: next-character arrow (hidden on desktop) -->
+      <button class="char-nav char-nav--next" id="char-next" type="button" aria-label="Next character">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l7 7-7 7M12 5l7 7-7 7" /></svg>
+      </button>
     </div>
   </section>
 
@@ -107,6 +142,9 @@
              loading="lazy" />
       </figure>
 
+      <div class="world__desc-wrap">
+      <!-- frame bars around the text show on tablet/phone only -->
+      <div class="frame-bar world__bar"><img src="../assets/images/ui/frame-bar.webp" alt="" /></div>
       <p class="world__desc">
         At the heart of the world lies Aetheria, a once-peaceful kingdom protected by an ancient
         power that keeps the balance between the six realms. But darkness has begun spreading from
@@ -116,6 +154,8 @@
         determine the fate of Aetheria: will they unite the realms and restore peace, or watch the
         world fall into darkness?
       </p>
+      <div class="frame-bar world__bar"><img src="../assets/images/ui/frame-bar.webp" alt="" /></div>
+      </div>
     </div>
   </section>
 
@@ -179,7 +219,7 @@
     </div>
   </footer>
 
-  <script src="../js/characters.js?v=7"></script>
-  <script src="../js/home.js?v=7"></script>
+  <script src="../js/characters.js?v=9"></script>
+  <script src="../js/home.js?v=9"></script>
 </body>
 </html>

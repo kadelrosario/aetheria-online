@@ -11,8 +11,9 @@ aetheria-online/
 │   └── home.html           ← Homepage: Container 1 (hero + stars), 2 (character),
 │                             3 (Aetheria map), 4 (Play for Free), footer
 ├── css/
-│   ├── landing.css
-│   └── home.css
+│   ├── landing.css         ← landing page (incl. tablet layout at the bottom)
+│   ├── home.css            ← homepage, desktop design
+│   └── responsive.css      ← homepage tablet/phone layout (≤1024px)
 ├── js/
 │   ├── landing.js          ← starfield + "Official Website" warp transition
 │   ├── page-transition.js  ← homepage arrival effect (runs in <head>)

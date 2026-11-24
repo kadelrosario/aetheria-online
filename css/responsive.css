@@ -1,0 +1,398 @@
+/* =========================================================
+   AETHERIA ONLINE - TABLET & PHONE LAYOUT
+   Loaded after home.css. Everything here only applies to
+   screens 1024px wide and narrower; the desktop design in
+   home.css is untouched.
+   (Phones use this tablet layout until a phone design is added.)
+   ========================================================= */
+
+@media (max-width: 1024px) {
+
+  :root {
+    --bottom-nav-h: 68px;
+  }
+
+  /* leave room so the fixed bottom menu never covers the footer */
+  body {
+    padding-bottom: var(--bottom-nav-h);
+  }
+
+  .page > section {
+    scroll-margin-top: 0;
+  }
+
+  /* -------------------------------------------------------
+     MENU BAR: sticky at the bottom, scrolls left/right
+     ------------------------------------------------------- */
+  .nav {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    height: var(--bottom-nav-h);
+    min-height: 0;
+    padding: 0;
+    border-bottom: none;
+    border-top: 1px solid rgba(201, 162, 75, 0.35);
+  }
+
+  /* account + register move up into Container 1 on tablet */
+  .nav__right {
+    display: none;
+  }
+
+  .nav__links {
+    width: 100%;
+    height: 100%;
+    gap: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;           /* swipe/scroll sideways when items don't fit */
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;      /* hide the scrollbar (Firefox) */
+  }
+
+  .nav__links::-webkit-scrollbar {
+    display: none;              /* hide the scrollbar (Chrome, Safari, Edge) */
+  }
+
+  .nav__links li {
+    position: relative;
+    flex: 1 0 auto;             /* share the width evenly when everything fits */
+    display: flex;
+    scroll-snap-align: start;
+  }
+
+  /* thin vertical divider between items */
+  .nav__links li + li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 26%;
+    bottom: 26%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.4);
+  }
+
+  .nav__links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 clamp(22px, 4vw, 40px);
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  /* arrival from the landing page: slide the bar up from the bottom */
+  html.arriving .nav {
+    animation-name: navArriveUp;
+  }
+
+  @keyframes navArriveUp {
+    from { opacity: 0; transform: translateY(100%); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* -------------------------------------------------------
+     CONTAINER 1: header (logo / account / register) + intro
+     ------------------------------------------------------- */
+  .hero {
+    aspect-ratio: auto;
+    max-height: none;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: clamp(60px, 10vw, 110px);
+    background-position: center 60%;
+  }
+
+  .hero__header {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px clamp(16px, 4vw, 32px);
+    background: linear-gradient(to bottom, rgba(30, 70, 140, 0.35), rgba(30, 70, 140, 0.12));
+    border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  }
+
+  .hero__logo {
+    width: clamp(110px, 20vw, 170px);
+    height: auto;
+  }
+
+  .hero__header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .intro {
+    position: relative;
+    z-index: 2;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: min(88%, 760px);
+    margin: clamp(28px, 6vw, 56px) auto 0;
+  }
+
+  .intro__text {
+    font-size: clamp(13px, 1.9vw, 17px);
+  }
+
+  /* the stars move to Container 2 on tablet */
+  .stars,
+  .star-hint {
+    display: none;
+  }
+
+  /* -------------------------------------------------------
+     CONTAINER 2: « portrait » + star + description
+     ------------------------------------------------------- */
+  .characters {
+    padding: clamp(40px, 7vw, 72px) 16px clamp(60px, 9vw, 100px);
+  }
+
+  .characters__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      "prev portrait next"
+      "star star     star"
+      "desc desc     desc";
+    justify-content: center;
+    align-items: center;
+    column-gap: clamp(8px, 5vw, 48px);
+    row-gap: 0;
+  }
+
+  /* let the logo/description/button join the grid directly */
+  .characters__info {
+    display: contents;
+  }
+
+  .characters__logo,
+  .btn--discover {
+    display: none;
+  }
+
+  .portrait {
+    grid-area: portrait;
+    justify-self: center;
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .char-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: #3a3a46;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+
+  .char-nav--prev { grid-area: prev; }
+  .char-nav--next { grid-area: next; }
+
+  .char-nav svg {
+    width: 30px;
+    height: 30px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    /* soft gold glow that gently breathes (kept subtle on purpose) */
+    animation: arrowGlow 2.6s ease-in-out infinite;
+  }
+
+  .char-nav--next svg {
+    animation-delay: -1.3s; /* the two arrows glow alternately */
+  }
+
+  @keyframes arrowGlow {
+    0%, 100% { filter: drop-shadow(0 0 1px rgba(214, 170, 70, 0.35)); }
+    50%      { filter: drop-shadow(0 0 4px rgba(214, 170, 70, 0.75)) drop-shadow(0 0 8px rgba(255, 215, 120, 0.35)); }
+  }
+
+  .char-nav:hover,
+  .char-nav:focus-visible {
+    color: #111;
+    background: rgba(201, 162, 75, 0.18);
+  }
+
+  .char-nav:active {
+    transform: scale(0.92);
+  }
+
+  /* the current character's star, overlapping the bottom frame bar */
+  .char-star {
+    grid-area: star;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    margin-top: -32px;
+    height: 84px;
+    pointer-events: none;
+  }
+
+  /* reuse the desktop star (same glow, pulse and heartbeat mist),
+     but placed in the normal flow instead of on the hillside */
+  .star--static,
+  .star--static:hover,
+  .star--static.is-active {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    display: block;
+    width: 62px;
+    cursor: default;
+  }
+
+  .characters__desc {
+    grid-area: desc;
+    justify-self: center;
+    width: min(100%, 560px);
+    min-height: 0;
+    margin-top: 4px;
+    font-size: clamp(14px, 2vw, 17px);
+  }
+
+  /* -------------------------------------------------------
+     CONTAINER 3: map + framed description
+     ------------------------------------------------------- */
+  .world {
+    min-height: 0;
+    padding: clamp(40px, 7vw, 72px) 20px clamp(60px, 9vw, 100px);
+  }
+
+  .world__inner {
+    width: min(100%, 760px);
+  }
+
+  .world__desc-wrap {
+    width: min(90%, 640px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  .world__bar {
+    display: block;
+    width: 82%;
+  }
+
+  .world__desc {
+    margin: -1.6% 0;
+    padding: clamp(22px, 4vw, 34px) clamp(18px, 4vw, 36px);
+  }
+
+  /* -------------------------------------------------------
+     CONTAINER 4: Play for Free (taller, portrait shape)
+     ------------------------------------------------------- */
+  .play {
+    aspect-ratio: 3 / 4;
+    max-height: calc(100vh - var(--bottom-nav-h));
+    min-height: 480px;
+  }
+
+  /* -------------------------------------------------------
+     FOOTER
+     ------------------------------------------------------- */
+  .footer__top {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px 24px;
+    text-align: center;
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__tagline {
+    max-width: none;
+  }
+
+  .footer__col {
+    align-items: center;
+  }
+
+  .footer__social {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 12px;
+  }
+}
+
+/* ---------- Phones (600px and narrower) ----------
+   Same layout as tablet, with these phone-specific adjustments. */
+@media (max-width: 600px) {
+  .hero__header .btn--small {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+
+  /* Container 1: slightly narrower, easier-to-read intro box */
+  .intro {
+    width: 90%;
+  }
+
+  .intro__text {
+    font-size: 14px;
+    line-height: 1.55;
+    padding: 20px 18px;
+  }
+
+  /* Container 4: Play for Free fills the phone screen */
+  .play {
+    aspect-ratio: auto;
+    height: calc(100svh - var(--bottom-nav-h));
+    min-height: 520px;
+    max-height: none;
+  }
+
+  .characters__inner {
+    column-gap: 4px;
+  }
+
+  .char-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .char-nav svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr;
+  }
+}

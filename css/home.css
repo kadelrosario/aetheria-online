@@ -791,80 +791,17 @@ html.arriving .nav {
 }
 
 /* =========================================================
-   Responsive
+   Tablet & phone layout lives in css/responsive.css
    ========================================================= */
-@media (max-width: 900px) {
-  .footer__top {
-    grid-template-columns: 1fr 1fr;
-  }
 
-  .footer__brand {
-    grid-column: 1 / -1;
-  }
-
-  .play {
-    aspect-ratio: auto;
-    min-height: 70vh;
-  }
+/* Pieces that only appear on tablet/phone are hidden on desktop */
+.hero__header,
+.char-nav,
+.char-star,
+.world__bar {
+  display: none;
 }
 
-@media (max-width: 480px) {
-  .footer__top {
-    grid-template-columns: 1fr;
-  }
-}
-@media (max-width: 900px) {
-  .hero {
-    aspect-ratio: auto;
-    max-height: none;
-    min-height: calc(100vh - var(--nav-height));
-  }
-
-  .intro {
-    top: 24px;
-    width: calc(100% - 32px);
-  }
-
-  /* on tall, narrow screens keep the stars in the lower part, below the text */
-  .star {
-    top: calc(var(--y) * 0.7 + 30%);
-  }
-
-  .characters {
-    aspect-ratio: auto;
-  }
-
-  .characters__inner {
-    grid-template-columns: 1fr;
-  }
-
-  .portrait {
-    max-width: 380px;
-  }
-}
-
-@media (max-width: 600px) {
-  .nav {
-    position: relative; /* not pinned on phones: it would take too much screen */
-    flex-direction: column;
-    gap: 10px;
-    padding-top: 14px;
-  }
-
-  .page > section {
-    scroll-margin-top: 0;
-  }
-
-  .nav__links {
-    justify-content: center;
-    gap: 8px 16px;
-  }
-
-  .nav__links a {
-    font-size: 12px;
-  }
-
-  .intro {
-    top: 20px;
-  }
+.world__desc-wrap {
+  width: 100%;
 }

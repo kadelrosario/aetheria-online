@@ -131,3 +131,50 @@ body::after {
     gap: 16px;
   }
 }
+
+/* ===== Tablet & phone (1024px and narrower) =====
+   Bigger logo, buttons stacked: Play for Free on top, Official Website below.
+   The starfield, shooting stars and warp transition are unchanged. */
+@media (max-width: 1024px) {
+  .landing {
+    gap: clamp(56px, 11vh, 110px);
+  }
+
+  .landing__logo {
+    width: min(72vw, 600px);
+  }
+
+  .landing__actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .landing__actions .btn {
+    min-width: min(250px, 70vw);
+    padding: 16px 28px;
+  }
+}
+
+/* ===== Phone (600px and narrower) =====
+   Bigger logo, smaller pill-shaped buttons stacked a little closer. */
+@media (max-width: 600px) {
+  .landing {
+    gap: clamp(40px, 8vh, 72px);
+  }
+
+  .landing__logo {
+    width: 80vw;
+  }
+
+  .landing__actions {
+    gap: 16px;
+  }
+
+  .landing__actions .btn {
+    min-width: 190px;
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 999px;
+  }
+}

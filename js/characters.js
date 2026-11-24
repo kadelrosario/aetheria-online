@@ -2,12 +2,15 @@
  * Key = the data-character value on each star in pages/home.html.
  * image paths are relative to pages/home.html.
  * frameColor = the thin vertical border around the portrait.
+ * star = the glowing star shown under the portrait on tablet/phone.
+ * The order of the entries is the order the « » arrows step through.
  */
 
 const CHARACTERS = {
   warrior: {
     name: "Warrior",
     image: "../assets/images/characters/warrior.png",
+    star: "../assets/images/stars/star-red.png",
     frameColor: "#d62828",
     description:
       "Born into the royal guard, the Warrior was trained to protect the kingdom from ancient monsters and invading forces. After witnessing the destruction of his homeland, he vowed to become the strongest knight and defend those who cannot defend themselves.",
@@ -15,6 +18,7 @@ const CHARACTERS = {
   cleric: {
     name: "Cleric",
     image: "../assets/images/characters/cleric.png",
+    star: "../assets/images/stars/star-blue.png",
     frameColor: "#2f7fd8",
     description:
       "Chosen by the Temple of Light, the Cleric possesses the rare ability to channel divine energy and heal the wounded. He travels across the kingdoms, cleansing corrupted lands and restoring the balance between light and darkness.",
@@ -22,6 +26,7 @@ const CHARACTERS = {
   mage: {
     name: "Mage",
     image: "../assets/images/characters/mage.png",
+    star: "../assets/images/stars/star-purple.png",
     frameColor: "#7b2fd0",
     description:
       "Born with extraordinary magical abilities, the Mage was once a gifted student at the Academy of Arcane Arts. After discovering forbidden spells hidden in an ancient library, she embarked on a journey to master the elements and uncover the secrets of magic.",
@@ -29,6 +34,7 @@ const CHARACTERS = {
   archer: {
     name: "Archer",
     image: "../assets/images/characters/archer.png",
+    star: "../assets/images/stars/star-green.png",
     frameColor: "#2e8b3a",
     description:
       "Raised in the enchanted forests of Eldoria, the Archer belongs to an ancient elven tribe sworn to protect nature. With exceptional eyesight and unmatched precision, she hunts the creatures responsible for destroying her homeland.",
@@ -36,6 +42,7 @@ const CHARACTERS = {
   alchemist: {
     name: "Alchemist",
     image: "../assets/images/characters/alchemist.png",
+    star: "../assets/images/stars/star-gold.png",
     frameColor: "#e3a21a",
     description:
       "Once an apprentice in the Royal Science Guild, the Alchemist became obsessed with discovering the secrets of life and transformation. After an experiment unleashed a dangerous chemical plague, he dedicated his life to creating powerful potions, antidotes, and weapons.",
@@ -43,6 +50,7 @@ const CHARACTERS = {
   assassin: {
     name: "Assassin",
     image: "../assets/images/characters/assassin.png",
+    star: "../assets/images/stars/star-dark-red.png",
     frameColor: "#6b0f14",
     description:
       "Trained by a secret organization known as the Shadow Order, the Assassin mastered stealth and deadly combat techniques. After discovering his masters were serving the Demon King, he betrayed the organization and became a lone hunter seeking revenge.",
@@ -50,6 +58,7 @@ const CHARACTERS = {
   mechanic: {
     name: "Mechanic",
     image: "../assets/images/characters/mechanic.png",
+    star: "../assets/images/stars/star-bronze.png",
     frameColor: "#8a5a2b",
     description:
       "A young engineering prodigy from the industrial city of Gearhaven, the Mechanic began building machines at an unusually early age. Despite her small stature, she creates powerful mechanical companions and dreams of building the ultimate machine capable of defeating ancient dragons.",

@@ -1,7 +1,9 @@
 /* ===== Homepage script =====
- * Clicking a star in Container 1 shows that character in Container 2.
- * Only the character image and description fade (out 0.5s -> swap -> in 0.5s);
- * the rest of Container 2 stays still.
+ * Desktop: clicking a star in Container 1 shows that character in Container 2.
+ * Tablet/phone: the « » arrows (or a swipe) step through the characters, and
+ * the current character's glowing star shows under the portrait.
+ * Only the character image, description and that star fade
+ * (out 0.5s -> swap -> in 0.5s); the rest of Container 2 stays still.
  */
 
 (function () {
@@ -9,12 +11,17 @@
 
   const FADE_MS = 500; // keep in sync with .fade transition in css/home.css
   const DEFAULT_CHARACTER = "warrior";
+  const ORDER = Object.keys(CHARACTERS); // arrow order = order in characters.js
 
   const imgEl = document.getElementById("character-img");
   const descEl = document.getElementById("character-desc");
   const portraitEl = document.getElementById("portrait");
+  const starWrapEl = document.getElementById("character-star-wrap");
+  const starEl = document.getElementById("character-star");
+  const starImgEl = starEl.querySelector("img");
   const charactersSection = document.getElementById("characters");
-  const stars = document.querySelectorAll(".star");
+  const stars = document.querySelectorAll(".stars .star"); // Container 1 stars only
+  const fadeEls = [imgEl, descEl, starWrapEl];
 
   let current = null;
   let requestId = 0; // guards against fast repeated clicks
@@ -34,6 +41,9 @@
     imgEl.alt = c.name;
     descEl.textContent = c.description;
     portraitEl.style.setProperty("--frame-color", c.frameColor);
+    // tablet/phone star: same image + glow colour as the desktop star
+    starImgEl.src = c.star;
+    starEl.dataset.character = key;
   }
 
   function setActiveStar(key) {
@@ -53,8 +63,7 @@
     preload.src = CHARACTERS[key].image;
 
     // 1. Fade out
-    imgEl.classList.add("is-hidden");
-    descEl.classList.add("is-hidden");
+    fadeEls.forEach((el) => el.classList.add("is-hidden"));
     await wait(FADE_MS);
     await waitForImage(preload);
     if (myId !== requestId) return; // a newer click took over
@@ -65,8 +74,7 @@
     if (myId !== requestId) return;
 
     // 3. Fade in
-    imgEl.classList.remove("is-hidden");
-    descEl.classList.remove("is-hidden");
+    fadeEls.forEach((el) => el.classList.remove("is-hidden"));
   }
 
   stars.forEach((star) => {
@@ -75,6 +83,28 @@
       charactersSection.scrollIntoView({ behavior: "smooth" });
     });
   });
+
+  /* ---------- Tablet/phone: « » arrows and swipe ---------- */
+  function step(direction) {
+    const i = ORDER.indexOf(current);
+    const next = ORDER[(i + direction + ORDER.length) % ORDER.length]; // wraps around
+    showCharacter(next);
+  }
+
+  document.getElementById("char-prev").addEventListener("click", () => step(-1));
+  document.getElementById("char-next").addEventListener("click", () => step(1));
+
+  // Swipe left/right on the portrait
+  let touchX = null;
+  portraitEl.addEventListener("touchstart", (e) => {
+    touchX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  portraitEl.addEventListener("touchend", (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
 
   // Initial character (no animation on page load)
   current = DEFAULT_CHARACTER;
