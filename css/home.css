@@ -419,11 +419,7 @@ img {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
 }
 
-.btn--discover {
-  padding: 18px 0;
-  width: min(65%, 280px);
-  font-size: clamp(16px, 1.35vw, 20px);
-}
+/* Discover More + Play for Free share one size (see "Matching big buttons" below) */
 
 /* Portrait frame */
 .portrait {
@@ -545,10 +541,17 @@ img {
   background: url("../assets/images/backgrounds/world-map.webp") center / cover no-repeat;
 }
 
+/* Matching big buttons: Discover More (Container 2) and Play for Free (Container 4)
+   always have exactly the same button size and font size */
+.btn--discover,
 .btn--play {
-  padding: 22px clamp(44px, 5vw, 72px);
-  font-size: clamp(20px, 1.8vw, 28px);
-  border-radius: 14px;
+  width: 200px;
+  padding: 12px 16px;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+.btn--play {
   animation: playPulse 2.4s ease-in-out infinite;
 }
 

@@ -13,7 +13,8 @@ aetheria-online/
 ├── css/
 │   ├── landing.css         ← landing page (incl. tablet layout at the bottom)
 │   ├── home.css            ← homepage, desktop design
-│   └── responsive.css      ← homepage tablet/phone layout (≤1024px)
+│   ├── responsive.css      ← homepage tablet/phone layout (≤1024px)
+│   └── buttons.css         ← shared 3D gold button style (both pages)
 ├── js/
 │   ├── landing.js          ← starfield + "Official Website" warp transition
 │   ├── page-transition.js  ← homepage arrival effect (runs in <head>)
